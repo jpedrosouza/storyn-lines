@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story'n Lines</title>
+
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    <script defer src="/js/index.js"></script>
+</head>
+
+<body>
+
+    <div class="content">
+        <div class="logo">
+            <h1>Story'n Lines</h1>
+            <h3>A história como você nunca viu.</h3>
+        </div>
+        <div class="login-container">
+            <form action="/auth" method="POST" class="login-form" id="login-form">
+                <input type="email" name="email" id="email">
+                <label for="email">Informe seu email.</label>
+                <input type="password" name="password" id="password">
+                <label for="email">Informe sua senha.</label>
+                <input type="button" value="Login" id="login-button">
+                <input type="button" value="Cadastrar" id="register">
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('register').addEventListener('click', () => {
+            window.location.href = '/registrar';
+        });
+    </script>
+
+</body>
+
+</html>
