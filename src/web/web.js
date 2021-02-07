@@ -1,14 +1,16 @@
 const express = require('express');
+const handlebars = require('express-handlebars');
 const path = require('path');
 
 const app = express();
+
 const ModelUser = require('../database/models/user_model');
 const PasswordManager = require('../utils/password_manager');
 
 app.use(express.static(path.join(__dirname, '/../../public')));
-app.engine('.html', require('ejs').renderFile);
+app.engine('.hbs', handlebars({ extname: '.hbs', defaultLayout: false }));
 app.set('views', __dirname + '/views');
-app.set('view engine', 'html');
+app.set('view engine', '.hbs');
 
 app.get('/', (req, res) => {
     return res.render('index');
@@ -77,7 +79,7 @@ app.get('/inicio', (req, res) => {
 app.get('/space', async(req, res) => {
     const spaceId = req.query.id;
 
-    return res.render('space');
+    return res.render('space', { space_id: spaceId });
 });
 
 module.exports = app;

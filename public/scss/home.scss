@@ -1,33 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
-* {
-    margin: 0;
-    padding: 0;
-}
-
 body {
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
-    font-family: 'Oswald', sans-serif;
+    font-family: "Oswald", sans-serif;
+    background: #242424ff;
+    color: white;
+    overflow-x: hidden;
 }
 
 header {
-    position: relative;
+    position: unset;
     width: 100vw;
     height: 70px;
     padding-left: 20px;
-    padding-right: 20px;
+    padding-right: 0px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     background: black;
     bottom: 20px;
-    span {
-        font-weight: 500;
-        font-size: 20px;
-    }
 }
 
 .slow-transition {
@@ -40,7 +34,8 @@ header {
 }
 
 .header-options {
-    width: 210px;
+    width: 150px;
+    padding-right: 50px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;

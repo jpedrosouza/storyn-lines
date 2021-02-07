@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space - Story'n Lines {{{title}}}</title>
+
+    <link rel="stylesheet" href="/css/space.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/background.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script defer src="/js/space.js"></script>
+</head>
+
+<body>
+    <header>
+        <span id="title" class="{{{space_id}}}">Story'n Lines</span>
+        <div class="header-options">
+            <span id="create-space">Criar um espaço</span>
+            <span id="exit">Sair</span>
+        </div>
+    </header>
+
+    <div class="background">
+        <div class="container">
+            <div class="shape sun"></div>
+            <div class="mercury-orbit">
+                <div class="shape mercury"></div>
+            </div>
+            <div class="venus-orbit">
+                <div class="shape venus"></div>
+            </div>
+            <div class="earth-orbit">
+                <div class="shape earth"></div>
+            </div>
+            <div class="mars-orbit">
+                <div class="shape mars"></div>
+            </div>
+            <div class="jupiter-orbit">
+                <div class="shape jupiter"></div>
+            </div>
+            <div class="saturn-orbit">
+                <div class="shape saturn">
+                    <div class="ring"></div>
+                </div>
+            </div>
+            <div class="uranus-orbit">
+                <div class="shape uranus"></div>
+            </div>
+            <div class="neptune-orbit">
+                <div class="shape neptune"></div>
+            </div>
+            <div class="asteroid-belt-orbit"></div>
+            <div class="asteroid-belt-object-orbit v">
+                <div class="shape object vesta"></div>
+            </div>
+            <div class="asteroid-belt-object-orbit j">
+                <div class="shape object juno"></div>
+            </div>
+            <div class="asteroid-belt-object-orbit c">
+                <div class="shape object ceres"></div>
+            </div>
+            <div class="asteroid-belt-object-orbit p">
+                <div class="shape object pallas"></div>
+            </div>
+            <div class="kuiper-belt-orbit"></div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="posts-container">
+            <div class="post slow-transition">
+                <span>__jpedrosouza - 07/02/2021 - 03:47</span>
+                <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi eum similique, vitae aperiam
+                    maxime sit ut delectus incidunt, officiis distinctio, aliquam esse eius cupiditate adipisci
+                    provident asperiores voluptatum culpa architecto.</span>
+            </div>
+        </div>
+        <div class="input-container">
+            <input type="text" name="text" id="text" placeholder="Escreva aqui para fazer uma postagem no Space...">
+            <span class="material-icons" id="send-button">
+                send
+            </span>
+            <span class="material-icons like" id="like-deslike">
+                favorite_border
+            </span>
+        </div>
+    </div>
+</body>
+
+</html>
