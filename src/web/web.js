@@ -4,7 +4,7 @@ const path = require('path');
 
 const app = express();
 
-const ModelUser = require('../database/models/user_model');
+const controller = require('../database/controllers');
 const PasswordManager = require('../utils/password_manager');
 
 app.use(express.static(path.join(__dirname, '/../../public')));
@@ -23,7 +23,12 @@ app.post('/create-account', async(req, res) => {
     const password_hash = PasswordManager.sha512(password, password_salt);
 
     // Create a user in Database
-    await ModelUser.createUser(username, email, password_salt, password_hash);
+    controller.users.createUser({
+        username: username,
+        email: email,
+        password_salt: password_salt,
+        password_hash: password_hash
+    });
 
     return res.render('index');
 });
@@ -31,7 +36,7 @@ app.post('/create-account', async(req, res) => {
 app.post('/auth', async(req, res) => {
     const { email, password } = req.body;
 
-    const userData = await ModelUser.getUserByEmail(email);
+    const userData = await controller.users.getUserByEmail(email);
 
     if (userData.length == 0) {
         return res.json({

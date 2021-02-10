@@ -1,4 +1,5 @@
 const spaceId = document.getElementById('title').className;
+const postsContainer = document.getElementById('posts-container');
 
 (function() {
     getPosts()
@@ -16,11 +17,18 @@ async function getPosts() {
             })
         }).then(response => response.json())
         .then((response) => {
-            console.log(response);
+            response.forEach((post) => {
+                postsContainer.innerHTML += `
+                <div class="post slow-transition">
+                <span>${post['users']['username']} - 07/02/2021 - 03:47</span>
+                <span>${post['content']}</span>
+                </div>
+                `;
+            })
         });
 }
 
-document.getElementById('like-deslike').addEventListener('click', () => {
+document.getElementById('like-deslike').addEventListener('click', async() => {
     var likeButton = document.getElementById('like-deslike');
 
     likeButton.innerHTML = '';
@@ -31,12 +39,34 @@ document.getElementById('like-deslike').addEventListener('click', () => {
         likeButton.innerHTML = 'favorite';
 
         likeButton.className = 'material-icons deslike';
+
+        await fetch('/space/add-space-like', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                space_id: spaceId
+            })
+        });
     } else if (likeButton.className.toString() == 'material-icons deslike') {
         console.log('Deslike post');
 
         likeButton.innerHTML = 'favorite_border';
 
         likeButton.className = 'material-icons like';
+
+        await fetch('/space/remove-space-like', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                space_id: spaceId
+            })
+        });
     }
 });
 

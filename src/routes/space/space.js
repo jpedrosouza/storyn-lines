@@ -2,13 +2,13 @@ const express = require('express');
 
 const app = express();
 
-const SpaceModel = require('../../database/models/space_model');
+const controller = require('../../database/controllers');
 
 app.post('/create-space', async(req, res) => {
     const { space_name } = req.body;
     const uid = req.session.uid;
 
-    await SpaceModel.createSpace(uid, space_name);
+    controller.spaces.createSpace(uid, { space_name: space_name });
 
     return res.json({
         message: 'Espaço criado com sucesso!'
@@ -16,15 +16,33 @@ app.post('/create-space', async(req, res) => {
 });
 
 app.get('/get-home-spaces-famous', async(req, res) => {
-    const response = await SpaceModel.getSpaceFamous();
+    const response = await controller.spaces.getSpacesFamous();
+
+    console.log(response);
 
     return res.json(response);
 });
 
 app.get('/get-home-spaces-news', async(req, res) => {
-    const response = await SpaceModel.getSpacesRecents();
+    const response = await controller.spaces.getSpacesRecents();
 
     return res.json(response);
+});
+
+app.post('/add-space-like', async(req, res) => {
+    const { space_id } = req.body;
+
+    await controller.spaces.addLikeInSpace(space_id);
+
+    return res.status(200).end();
+});
+
+app.post('/remove-space-like', async(req, res) => {
+    const { space_id } = req.body;
+
+    await controller.spaces.removeLikeInSpace(space_id);
+
+    return res.status(200).end();
 });
 
 module.exports = app;

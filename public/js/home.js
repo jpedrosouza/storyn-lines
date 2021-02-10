@@ -15,13 +15,13 @@ async function getSpacesFamous() {
                 console.log(element);
 
                 famousSpaces.innerHTML += `
-                <div class="space" id="${element['id']}">
+                <a href="/space?id=${element['id']}" class="space">
                     <span class="space-title">${element['space_name']}</span>
                     <img src="/assets/images/comment.svg">
                     <span>${element['posts']}</span>
                     <img src="/assets/images/favorite.svg">
                     <span>${element['likes']}</span>
-                </div>
+                </a>
                 `;
             });
         });
@@ -39,13 +39,13 @@ async function getSpacesNews() {
                 console.log(element);
 
                 newSpaces.innerHTML += `
-                <div class="space" id="${element['id']}">
+                <a href="/space?id=${element['id']}" class="space">
                     <span class="space-title">${element['space_name']}</span>
                     <img src="/assets/images/comment.svg">
                     <span>${element['posts']}</span>
                     <img src="/assets/images/favorite.svg">
                     <span>${element['likes']}</span>
-                </div>
+                </a>
                 `;
             });
         });
