@@ -69,7 +69,7 @@ document.getElementById('create-space').addEventListener('click', async() => {
             .then(response => response.json())
             .then((response) => {
 
-                getSpaces();
+                getSpacesNews();
             });
     }
 });

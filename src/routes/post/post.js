@@ -21,6 +21,8 @@ app.post('/create-post', async(req, res) => {
         content: content,
     });
 
+    await controller.spaces.addPostNumberInSpace(space_id);
+
     return res.json({
         message: 'Post criado com sucesso!',
         code: 0

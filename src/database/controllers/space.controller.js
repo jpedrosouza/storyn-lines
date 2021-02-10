@@ -45,6 +45,16 @@ exports.getSpacesRecents = () => {
     });
 }
 
+exports.addPostNumberInSpace = (spaceId) => {
+    return db.spaces.update({
+        'posts': Sequelize.literal('posts + 1')
+    }, {
+        where: {
+            id: spaceId
+        },
+    });
+}
+
 exports.addLikeInSpace = (spaceId) => {
     return db.spaces.update({
         'likes': Sequelize.literal('likes + 1')

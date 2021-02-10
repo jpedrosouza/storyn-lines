@@ -2,7 +2,8 @@ const spaceId = document.getElementById('title').className;
 const postsContainer = document.getElementById('posts-container');
 
 (function() {
-    getPosts()
+    getPosts();
+    getSpaceLiked();
 }());
 
 async function getPosts() {
@@ -26,6 +27,31 @@ async function getPosts() {
                 `;
             })
         });
+}
+
+async function getSpaceLiked() {
+    await fetch('/space/check-space-liked', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                space_id: spaceId
+            })
+        }).then((response) => response.json())
+        .then((response) => {
+            var likeButton = document.getElementById('like-deslike');
+
+            if (response['space_liked'] == true) {
+                likeButton.innerHTML = 'favorite';
+                likeButton.className = 'material-icons deslike';
+            } else {
+                likeButton.innerHTML = 'favorite_border';
+                likeButton.className = 'material-icons like';
+            }
+        });
+
 }
 
 document.getElementById('like-deslike').addEventListener('click', async() => {

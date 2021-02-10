@@ -14,6 +14,7 @@ db.sequelize = sequelize;
 db.users = require('./models/user_model')(sequelize, Sequelize);
 db.spaces = require('./models/space_model')(sequelize, Sequelize);
 db.posts = require('./models/post_model')(sequelize, Sequelize);
+db.likes = require('./models/like_model')(sequelize, Sequelize);
 
 db.users.hasMany(db.spaces, { as: 'space' });
 db.spaces.belongsTo(db.users, { foreignKey: 'userId', as: 'users' });
@@ -23,6 +24,12 @@ db.posts.belongsTo(db.spaces, { foreignKey: 'spaceId', as: 'spaces' });
 
 db.users.hasMany(db.posts, { as: 'post' });
 db.posts.belongsTo(db.users, { foreignKey: 'userId', as: 'users' });
+
+db.users.hasMany(db.likes, { as: 'like' });
+db.likes.belongsTo(db.users, { foreignKey: 'userId', as: 'users' });
+
+db.spaces.hasMany(db.likes, { as: 'like' });
+db.likes.belongsTo(db.spaces, { foreignKey: 'spaceId', as: 'spaces' });
 
 
 sequelize.authenticate().then(() => {
